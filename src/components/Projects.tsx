@@ -17,8 +17,8 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
       ],
       status: 'Featured',
       gradient: 'from-pink-400 to-purple-600',
-      demoUrl: 'https://dreamsofamachine.netlify.app/'
-      codeUrl: 'https://github.com/realwarrenlee/dreamsofamachine'
+      demoUrl: 'https://dreamsofamachine.netlify.app/',
+      codeUrl: 'https://github.com/yourusername/dreams-of-a-machine' // <- Add this
     },
     {
       title: 'Mindful Moments',
@@ -86,13 +86,13 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
       </button>
-      
+
       <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4">Projects</h2>
           <div className="h-1 w-20 bg-white/30 rounded-full"></div>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
@@ -105,14 +105,14 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
                     {project.status}
                   </span>
                 </div>
-                
+
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold mb-2">{project.title}</h3>
                   <p className="text-white/80 text-sm leading-relaxed">{project.description}</p>
                 </div>
-                
+
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {project.tags.map((tag) =>
                     tag.url ? (
                       <a
                         key={tag.name}
@@ -124,25 +124,41 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
                         {tag.name}
                       </a>
                     ) : (
-                      <span key={tag.name} className="bg-white/10 px-2 py-1 rounded-md text-xs text-white/70 border border-white/20">
+                      <span
+                        key={tag.name}
+                        className="bg-white/10 px-2 py-1 rounded-md text-xs text-white/70 border border-white/20"
+                      >
                         {tag.name}
                       </span>
                     )
-                  ))}
+                  )}
                 </div>
-                
+
                 <div className="flex gap-3 pt-2">
-                  <button 
-                    onClick={() => project.demoUrl && window.open(project.demoUrl, '_blank')}
-                    className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
-                  >
-                    <ExternalLink size={14} />
-                    <span>Demo</span>
-                  </button>
-                  <button className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm">
-                    <Github size={14} />
-                    <span>Code</span>
-                  </button>
+                  {project.demoUrl && (
+                    <button
+                      onClick={() => window.open(project.demoUrl, '_blank')}
+                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+                    >
+                      <ExternalLink size={14} />
+                      <span>Demo</span>
+                    </button>
+                  )}
+
+                  {project.codeUrl ? (
+                    <button
+                      onClick={() => window.open(project.codeUrl, '_blank')}
+                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+                    >
+                      <Github size={14} />
+                      <span>Code</span>
+                    </button>
+                  ) : (
+                    <span className="text-white/30 text-sm italic flex items-center gap-1">
+                      <Github size={14} className="opacity-30" />
+                      <span>Private</span>
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
