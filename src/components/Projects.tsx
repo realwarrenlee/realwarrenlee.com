@@ -18,6 +18,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
       status: 'Featured',
       gradient: 'from-pink-400 to-purple-600',
       demoUrl: 'https://dreamsofamachine.netlify.app/'
+      codeUrl: 'https://github.com/realwarrenlee/dreamsofamachine'
     },
     {
       title: 'Mindful Moments',
