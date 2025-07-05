@@ -21,7 +21,7 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
         { 
           title: 'Defence Intelligence Service', 
           description: 'Specialized intelligence training and service with Singapore\'s defense intelligence unit',
-          type: 'Intelligence', 
+          type: 'Military', 
           date: '2025', 
           icon: Building,
           url: 'https://www.mindef.gov.sg/dis'
