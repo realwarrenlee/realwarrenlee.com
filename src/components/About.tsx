@@ -25,7 +25,34 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           <div className="space-y-4 md:space-y-6">
             <p className="text-base md:text-lg leading-relaxed text-white/90">
-              I'm obsessed with <strong>AGI</strong> and the path to <strong>superintelligence</strong>. To create something <em>more intelligent than us</em> to solve our fundamental problems and unlock an <strong>age of abundance</strong>, where the cost of intelligence 🧠, energy ⚡, and space exploration 🚀 approaches zero.
+              I'm obsessed with{' '}
+              <a 
+                href="https://www.darioamodei.com/essay/machines-of-loving-grace" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors duration-200"
+              >
+                <strong>AGI</strong>
+              </a>{' '}
+              and{' '}
+              <a 
+                href="https://situational-awareness.ai/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors duration-200"
+              >
+                <strong>the path to superintelligence</strong>
+              </a>
+              . To create something <em>more intelligent than us</em> to solve our fundamental problems and unlock{' '}
+              <a 
+                href="https://ia.samaltman.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors duration-200"
+              >
+                <strong>an age of abundance</strong>
+              </a>
+              , where the cost of intelligence 🧠, energy ⚡, and space exploration 🚀 approaches zero.
             </p>
             
             <p className="text-base md:text-lg leading-relaxed text-white/90">
@@ -41,7 +68,16 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
             </p>
             
             <p className="text-base md:text-lg leading-relaxed text-white/90">
-              My <strong>optimistic guess</strong> puts AGI around <strong>2027</strong>, and I want to be part of making that happen. The goal is <strong>superintelligence</strong> that solves problems we never could — and delivers all the benefits of that transformation ✨.
+              My <strong>optimistic guess</strong> puts AGI around{' '}
+              <a 
+                href="https://ai-2027.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white hover:text-white/80 transition-colors duration-200"
+              >
+                <strong>2027</strong>
+              </a>
+              , and I want to be part of making that happen. The goal is <strong>superintelligence</strong> that solves problems we never could — and delivers all the benefits of that transformation ✨.
             </p>
           </div>
           
