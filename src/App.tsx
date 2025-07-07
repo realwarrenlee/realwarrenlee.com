@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-200 via-purple-200 to-blue-200 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
       {renderSection()}
     </div>
   );
