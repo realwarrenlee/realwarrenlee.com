@@ -13,7 +13,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
       tags: [
         { name: 'Vibe Coding', url: null },
         { name: 'Context Engineering', url: null },
-        { name: 'Bolt', url: 'https://bolt.new/' }
+        { name: 'Bolt', url: null }
       ],
       status: 'Featured',
       gradient: 'from-pink-400 to-purple-600',
@@ -81,7 +81,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
     <div className="min-h-screen w-full p-4 sm:p-6 md:p-8 text-white">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group"
+        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10"
       >
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
@@ -95,7 +95,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
-            <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 backdrop-blur-sm">
+            <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-sm card-shadow hover:card-shadow-hover">
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-start justify-between">
                   <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
@@ -138,7 +138,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
                   {project.demoUrl && (
                     <button
                       onClick={() => window.open(project.demoUrl, '_blank')}
-                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+                      className={`flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-1.5 border border-white/10${project.title === 'Dreams of a Machine' ? ' hover:scale-110 transition-transform duration-200' : ''}`}
                     >
                       <ExternalLink size={14} />
                       <span>Demo</span>
@@ -148,7 +148,7 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
                   {project.codeUrl ? (
                     <button
                       onClick={() => window.open(project.codeUrl, '_blank')}
-                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm"
+                      className={`flex items-center gap-2 text-white/60 hover:text-white transition-colors duration-200 text-sm button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-1.5 border border-white/10${project.title === 'Dreams of a Machine' ? ' hover:scale-110 transition-transform duration-200' : ''}`}
                     >
                       <Github size={14} />
                       <span>Code</span>

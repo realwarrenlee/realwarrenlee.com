@@ -45,7 +45,7 @@ const Garden: React.FC<GardenProps> = ({ onBack }) => {
     <div className="min-h-screen w-full p-4 sm:p-6 md:p-8 text-white">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group"
+        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10"
       >
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
@@ -56,13 +56,13 @@ const Garden: React.FC<GardenProps> = ({ onBack }) => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4">Digital Garden</h2>
           <div className="h-1 w-20 bg-white/30 rounded-full"></div>
           <p className="text-white/80 mt-4 text-base md:text-lg">
-            A collection of growing thoughts, ideas, and reflections. This space evolves as I do.
+            A collection of growing thoughts, ideas, and reflections.
           </p>
         </div>
         
         <div className="space-y-4 md:space-y-6">
           {thoughts.map((thought, index) => (
-            <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer backdrop-blur-sm">
+            <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer backdrop-blur-sm card-shadow hover:card-shadow-hover">
               <div className="flex items-start gap-3 md:gap-4">
                 <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${thought.color} flex items-center justify-center flex-shrink-0`}>
                   <thought.icon size={18} className="text-white md:w-5 md:h-5" />

@@ -10,7 +10,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
     <div className="min-h-screen w-full p-4 sm:p-6 md:p-8 text-white">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group"
+        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10"
       >
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
@@ -82,7 +82,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
           </div>
           
           <div className="space-y-4 md:space-y-6">
-            <div className="bg-white/10 rounded-xl p-4 md:p-6 border border-white/20 backdrop-blur-sm">
+            <div className="bg-white/10 rounded-xl p-4 md:p-6 border border-white/20 backdrop-blur-sm card-shadow hover:card-shadow-hover transition-all duration-300">
               <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2">
                 <Heart size={18} className="text-pink-300 md:w-5 md:h-5" />
                 Passions
@@ -94,15 +94,20 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
               </ul>
             </div>
             
-            <div className="bg-white/10 rounded-xl p-4 md:p-6 border border-white/20 backdrop-blur-sm">
+            <div className="bg-white/10 rounded-xl p-4 md:p-6 border border-white/20 backdrop-blur-sm card-shadow hover:card-shadow-hover transition-all duration-300">
               <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2">
                 <Code size={18} className="text-blue-300 md:w-5 md:h-5" />
                 Skills
               </h3>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-white/10 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-white/90 border border-white/20">
+                <a 
+                  href="https://docs.python.org/3/tutorial/index.html" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-white/10 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm text-white/90 border border-white/20 hover:bg-white/20 transition-colors duration-200"
+                >
                   Python
-                </span>
+                </a>
                 <a 
                   href="https://x.com/karpathy/status/1886192184808149383" 
                   target="_blank" 

@@ -18,7 +18,7 @@ const Contact: React.FC<ContactProps> = ({ onBack }) => {
     <div className="min-h-screen w-full p-4 sm:p-6 md:p-8 text-white">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group"
+        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10"
       >
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
@@ -33,8 +33,8 @@ const Contact: React.FC<ContactProps> = ({ onBack }) => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto">
-          <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 backdrop-blur-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 w-full max-w-4xl mx-auto">
+          <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 backdrop-blur-sm card-shadow hover:card-shadow-hover transition-all duration-300 w-full">
             <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 flex items-center gap-3">
               <Mail size={20} className="text-blue-300 md:w-6 md:h-6" />
               Email
@@ -50,7 +50,7 @@ const Contact: React.FC<ContactProps> = ({ onBack }) => {
             </a>
           </div>
           
-          <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 backdrop-blur-sm">
+          <div className="bg-white/10 rounded-xl p-6 md:p-8 border border-white/20 backdrop-blur-sm card-shadow hover:card-shadow-hover transition-all duration-300 w-full">
             <h3 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6 flex items-center gap-3">
               <MessageCircle size={20} className="text-green-300 md:w-6 md:h-6" />
               Connect
@@ -65,7 +65,7 @@ const Contact: React.FC<ContactProps> = ({ onBack }) => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 hover:scale-110"
+                  className="w-12 h-12 md:w-14 md:h-14 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl flex items-center justify-center text-white/70 hover:text-white transition-all duration-200 hover:scale-110 button-shadow hover:button-shadow-hover"
                   aria-label={label}
                 >
                   <Icon size={20} className="md:w-6 md:h-6" />

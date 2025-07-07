@@ -16,7 +16,8 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Military', 
           date: '2025', 
           icon: Shield,
-          url: 'https://www.mindef.gov.sg/army'
+          url: 'https://www.mindef.gov.sg/army',
+          types: undefined
         },
         { 
           title: 'Defence Intelligence Service', 
@@ -24,7 +25,8 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Military', 
           date: '2025', 
           icon: Building,
-          url: 'https://www.mindef.gov.sg/dis'
+          url: 'https://www.mindef.gov.sg/dis',
+          types: undefined
         },
         { 
           title: 'Nanyang Technological University', 
@@ -32,7 +34,8 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'University', 
           date: '2025', 
           icon: GraduationCap,
-          url: 'https://www.ntu.edu.sg/'
+          url: 'https://www.ntu.edu.sg/',
+          types: undefined
         }
       ]
     },
@@ -42,6 +45,7 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
         { 
           title: 'River Valley High School', 
           description: 'Secondary education and Junior College at a distinguished institution known for academic excellence and holistic development',
+          type: undefined,
           types: ['Secondary', 'Junior College'],
           date: '2019-2024', 
           icon: GraduationCap,
@@ -58,7 +62,8 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Primary', 
           date: '2013-2018', 
           icon: GraduationCap,
-          url: 'https://www.nyps.moe.edu.sg/'
+          url: 'https://www.nyps.moe.edu.sg/',
+          types: undefined
         }
       ]
     },
@@ -71,13 +76,14 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Birth', 
           date: '2006', 
           icon: Baby,
-          url: 'https://www.thomsonmedical.com/'
+          url: 'https://www.thomsonmedical.com/',
+          types: undefined
         }
       ]
     }
   ];
 
-  const getTypeColor = (type: string) => {
+  const getTypeColor = (type?: string) => {
     const colors = {
       'Military': 'from-green-500 to-emerald-600',
       'Intelligence': 'from-slate-500 to-gray-600',
@@ -87,14 +93,14 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
       'Primary': 'from-orange-500 to-amber-600',
       'Birth': 'from-pink-500 to-rose-600'
     };
-    return colors[type as keyof typeof colors] || 'from-gray-400 to-gray-600';
+    return type && colors[type as keyof typeof colors] ? colors[type as keyof typeof colors] : 'from-gray-400 to-gray-600';
   };
 
   return (
     <div className="min-h-screen w-full p-4 sm:p-6 md:p-8 text-white">
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group"
+        className="flex items-center gap-2 text-white/80 hover:text-white mb-6 md:mb-8 transition-colors duration-200 group button-shadow hover:button-shadow-hover bg-white/5 hover:bg-white/10 rounded-lg px-3 py-2 border border-white/10"
       >
         <ArrowLeft size={20} className="transition-transform group-hover:-translate-x-1" />
         <span>Back</span>
@@ -112,9 +118,9 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
         <div className="space-y-6 md:space-y-8">
           {timeline.map((yearGroup) => (
             <div key={yearGroup.year} className="space-y-3 md:space-y-4">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 group">
                 <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-white/20 flex items-center justify-center">
-                  <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white"></div>
+                  <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-white group-hover:pulse"></div>
                 </div>
                 <h3 className="text-xl md:text-2xl font-semibold text-white/90">{yearGroup.year}</h3>
               </div>
@@ -126,10 +132,10 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group bg-white/10 rounded-xl p-3 md:p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer backdrop-blur-sm block"
+                    className="group bg-white/10 rounded-xl p-3 md:p-4 border border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer backdrop-blur-sm block card-shadow hover:card-shadow-hover"
                   >
                     <div className="flex items-start gap-3 md:gap-4">
-                      <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br ${getTypeColor(item.type || item.types?.[0] || '')} flex items-center justify-center flex-shrink-0`}>
+                      <div className={`w-8 h-8 md:w-10 md:h-10 rounded-lg bg-gradient-to-br ${getTypeColor(item.type || (item.types && item.types[0]) || '')} flex items-center justify-center flex-shrink-0`}>
                         <item.icon size={14} className="text-white md:w-4 md:h-4" />
                       </div>
                       
@@ -139,17 +145,17 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
                             {item.title}
                           </h4>
                           <div className="flex flex-wrap gap-1">
-                            {item.types ? (
+                            {item.types && Array.isArray(item.types) ? (
                               item.types.map((type) => (
                                 <span key={type} className="bg-white/10 px-2 py-1 rounded-md text-xs text-white/70 border border-white/20">
                                   {type}
                                 </span>
                               ))
-                            ) : (
+                            ) : item.type ? (
                               <span className="bg-white/10 px-2 py-1 rounded-md text-xs text-white/70 border border-white/20">
                                 {item.type}
                               </span>
-                            )}
+                            ) : null}
                           </div>
                         </div>
                         

@@ -30,7 +30,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <button
               key={id}
               onClick={() => onNavigate(id)}
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium transition-all duration-200 ease-out hover:scale-105 text-sm sm:text-base min-w-fit"
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl px-4 sm:px-6 py-2.5 sm:py-3 text-white font-medium transition-all duration-200 ease-out hover:scale-105 text-sm sm:text-base min-w-fit button-shadow hover:button-shadow-hover"
             >
               <Icon size={16} className="sm:w-[18px] sm:h-[18px] flex-shrink-0" />
               <span className="whitespace-nowrap overflow-visible">{label}</span>
