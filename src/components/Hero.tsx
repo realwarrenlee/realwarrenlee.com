@@ -20,7 +20,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal gradient-text">
             Warren Lee
           </h1>
-          <p className="text-sm sm:text-base md:text-lg font-mono text-white/90 px-4">
+          <p className="text-sm sm:text-base md:text-lg font-mono text-white/90 px-4 drop-shadow-md">
             The boundary between thought and creation fades here.
           </p>
         </div>
