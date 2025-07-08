@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
     <div className="text-center backdrop-blur-lg p-4 sm:p-6 md:p-8 max-w-4xl mx-auto">
       <div className="space-y-6 md:space-y-8">
         <div className="space-y-3 md:space-y-4">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal gradient-text-radial">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal gradient-text">
             Warren Lee
           </h1>
           <p className="text-sm sm:text-base md:text-lg font-mono text-white/90 px-4 drop-shadow-md">
