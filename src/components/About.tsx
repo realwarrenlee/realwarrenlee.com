@@ -77,7 +77,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
               >
                 <strong>2027</strong>
               </a>
-              , and I want to be part of making that happen. The goal is <strong>superintelligence</strong> that solves problems we never could — and delivers all the benefits of that transformation ✨.
+              , and I want to be part of making that happen ✨.
             </p>
           </div>
           
