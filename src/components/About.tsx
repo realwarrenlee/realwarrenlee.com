@@ -30,7 +30,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
                 href="https://www.darioamodei.com/essay/machines-of-loving-grace" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/80 transition-colors duration-200"
+                className="text-white hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-200"
               >
                 <strong>AGI</strong>
               </a>{' '}
@@ -39,7 +39,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
                 href="https://situational-awareness.ai/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/80 transition-colors duration-200"
+                className="text-white hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-200"
               >
                 <strong>the path to superintelligence</strong>
               </a>
@@ -48,7 +48,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
                 href="https://ia.samaltman.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/80 transition-colors duration-200"
+                className="text-white hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-200"
               >
                 <strong>an age of abundance</strong>
               </a>
@@ -61,7 +61,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
                 href="https://www.mindef.gov.sg/discareers/careers/digital-specialist-digispec" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white/90 hover:text-white transition-colors duration-200"
+                className="text-white hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-200"
               >
                 <strong>Digital Specialist programme</strong>
               </a>, but my mind is <em>always</em> on AGI.
@@ -73,7 +73,7 @@ const About: React.FC<AboutProps> = ({ onBack }) => {
                 href="https://ai-2027.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-white hover:text-white/80 transition-colors duration-200"
+                className="text-white hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-200"
               >
                 <strong>2027</strong>
               </a>
