@@ -29,7 +29,7 @@ const Contact: React.FC<ContactProps> = ({ onBack }) => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4">Get in Touch</h2>
           <div className="h-1 w-20 bg-white/30 rounded-full"></div>
           <p className="text-white/80 mt-4 text-base md:text-lg">
-            I'd love to hear from you. Whether it's a project, collaboration, or just a hello.
+            Got something on your mind? I'm always excited to hear about new projects, ideas, or just meet someone new.
           </p>
         </div>
         
