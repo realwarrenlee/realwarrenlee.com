@@ -1,4 +1,5 @@
-import React, { useState, Suspense, PropsWithChildren } from 'react';
+import React, { useState } from 'react';
+import { User, Code, Flower, Archive, Mail, ArrowRight } from 'lucide-react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -6,114 +7,96 @@ import Garden from './components/Garden';
 import ArchiveSection from './components/ArchiveSection';
 import Contact from './components/Contact';
 
+// Import your background image
 import backgroundImage from './assets/background.jpg';
 
+// Lazy load WaterWave to avoid bundle size issues
 const WaterWave = React.lazy(() => import('react-water-wave'));
 
-// --- Type Definitions and Constants (No changes here) ---
-const SECTION_NAMES = {
-  home: 'home',
-  about: 'about',
-  projects: 'projects',
-  garden: 'garden',
-  archive: 'archive',
-  contact: 'contact',
-} as const;
-
-type SectionName = typeof SECTION_NAMES[keyof typeof SECTION_NAMES];
-
-// --- Reusable Layout Component (No changes here) ---
-const MainLayout = ({ children, className = '', ...props }: PropsWithChildren<{ className?: string; [key: string]: any }>) => (
-  <div 
-    className={`min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8 ${className}`}
-    {...props}
-  >
-    {children}
-  </div>
-);
-
 function App() {
-  const [activeSection, setActiveSection] = useState<SectionName>(SECTION_NAMES.home);
+  const [activeSection, setActiveSection] = useState('home');
 
-  const handleNavigate = (section: SectionName) => setActiveSection(section);
-  const handleBackToHome = () => setActiveSection(SECTION_NAMES.home);
-
-  const renderSectionContent = () => {
+  const renderSection = () => {
     switch (activeSection) {
-      case SECTION_NAMES.about:
-        return <About onBack={handleBackToHome} />;
-      case SECTION_NAMES.projects:
-        return <Projects onBack={handleBackToHome} />;
-      case SECTION_NAMES.garden:
-        return <Garden onBack={handleBackToHome} />;
-      case SECTION_NAMES.archive:
-        return <ArchiveSection onBack={handleBackToHome} />;
-      case SECTION_NAMES.contact:
-        return <Contact onBack={handleBackToHome} />;
+      case 'about':
+        return <About onBack={() => setActiveSection('home')} />;
+      case 'projects':
+        return <Projects onBack={() => setActiveSection('home')} />;
+      case 'garden':
+        return <Garden onBack={() => setActiveSection('home')} />;
+      case 'archive':
+        return <ArchiveSection onBack={() => setActiveSection('home')} />;
+      case 'contact':
+        return <Contact onBack={() => setActiveSection('home')} />;
       default:
-        return <Hero onNavigate={handleNavigate} />;
+        return <Hero onNavigate={setActiveSection} />;
     }
   };
 
-  if (activeSection === SECTION_NAMES.home) {
+  // Render home section with WaterWave
+  const renderHomeSection = () => {
     return (
-      <div style={{ position: 'relative', width: '100vw', height: '100vh', background: '#000' }}>
-        {/* === THE NEW LAYERING LOGIC === */}
-
-        {/* Layer 1: Static Background Image. Renders immediately, preventing a black screen. */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            zIndex: 1,
-          }}
-        />
-
-        {/* Layer 2: WaterWave Effect. Lazy-loads and renders on top of the static image. */}
-        {/* The `fallback={null}` is key. We don't need a visual fallback because the static image is already there. */}
-        <Suspense fallback={null}>
-          <WaterWave
-            imageUrl={backgroundImage} // It uses the same image for a seamless transition
-            style={{
+      <React.Suspense 
+        fallback={
+          <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
+            <Hero onNavigate={setActiveSection} />
+          </div>
+        }
+      >
+        <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+          {/* WaterWave layer - behind everything */}
+          <WaterWave 
+            imageUrl={backgroundImage}
+            style={{ 
+              width: '100%', 
+              height: '100%',
               position: 'absolute',
               top: 0,
               left: 0,
-              width: '100%',
-              height: '100%',
-              zIndex: 2, // Sits on top of the static image
+              zIndex: 1
             }}
             dropRadius={3}
             perturbance={0.04}
             resolution={256}
           >
-            {() => <></>}
+            {({ pause, play }) => (
+              // This div will have the ripple effect
+              <div style={{ width: '100%', height: '100%' }} />
+            )}
           </WaterWave>
-        </Suspense>
-
-        {/* Layer 3: UI Content (Hero). Renders immediately on the highest layer. */}
-        <MainLayout
-          className="absolute top-0 left-0"
-          style={{ zIndex: 3, pointerEvents: 'none' }}
-        >
-          <div style={{ pointerEvents: 'auto' }}>
-            <Hero onNavigate={handleNavigate} />
+          
+          {/* Content layer - on top, unaffected by ripples */}
+          <div 
+            className="min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8"
+            style={{ 
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              zIndex: 2,
+              width: '100%',
+              height: '100%',
+              pointerEvents: 'none' // Allow clicks to pass through to buttons
+            }}
+          >
+            <div style={{ pointerEvents: 'auto' }}>
+              <Hero onNavigate={setActiveSection} />
+            </div>
           </div>
-        </MainLayout>
-      </div>
+        </div>
+      </React.Suspense>
     );
+  };
+
+  // Main render logic
+  if (activeSection === 'home') {
+    return renderHomeSection();
   }
 
-  // Render all other sections with the gradient background (no changes here)
+  // For non-home sections, render normally with original background
   return (
-    <MainLayout className="bg-gradient-radial from-pink-300 via-purple-300 to-blue-300">
-      {renderSectionContent()}
-    </MainLayout>
+    <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
+      {renderSection()}
+    </div>
   );
 }
 
