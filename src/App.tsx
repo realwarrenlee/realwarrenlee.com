@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { User, Code, Flower, Archive, Mail, ArrowRight } from 'lucide-react';
+import React, { useState, Suspense } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -31,55 +30,52 @@ function App() {
     }
   };
 
-  const renderHomeSection = () => {
-    return (
-        <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-        <WaterWave 
-            imageUrl={backgroundImage}
-            style={{ 
-              width: '100%', 
-              height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 1
-            }}
-            dropRadius={3}
-            perturbance={0.04}
-            resolution={256}
-          >
-            {({ pause, play }) => (
-              <div style={{ width: '100%', height: '100%' }} />
-            )}
-          </WaterWave>
-          
-          <div 
-            className="min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8"
-            style={{ 
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 2,
-              width: '100%',
-              height: '100%',
-              pointerEvents: 'none'
-            }}
-          >
-            <div style={{ pointerEvents: 'auto' }}>
-              <Hero onNavigate={setActiveSection} />
-            </div>
-          </div>
+  const renderHomeSection = () => (
+    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <WaterWave
+          imageUrl={backgroundImage}
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: 1,
+          }}
+          dropRadius={3}
+          perturbance={0.04}
+          resolution={256}
+        >
+          {() => <div style={{ width: '100%', height: '100%' }} />}
+        </WaterWave>
+      </Suspense>
+
+      <div
+        className="min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: 2,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+        }}
+      >
+        <div style={{ pointerEvents: 'auto' }}>
+          <Hero onNavigate={setActiveSection} />
         </div>
-      </React.Suspense>
-    );
-  };
+      </div>
+    </div>
+  );
 
   if (activeSection === 'home') {
     return renderHomeSection();
   }
 
   return (
-    <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
+    <div className="min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
       {renderSection()}
     </div>
   );
