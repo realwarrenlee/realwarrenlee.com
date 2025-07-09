@@ -20,7 +20,7 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           types: undefined
         },
         { 
-          title: 'Defence Intelligence Service', 
+          title: 'Digital and Intelligence Service', 
           description: 'Specialized intelligence training and service with Singapore\'s defense intelligence unit',
           type: 'Military', 
           date: '2025', 
