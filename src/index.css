@@ -12,6 +12,11 @@
     animation: gradientText 3s ease-in-out infinite;
   }
   
+  /* Add this new class to fix the black background */
+  .bg-gradient-radial {
+    background: radial-gradient(circle, #f9a8d4, #d8b4fe, #93c5fd);
+  }
+  
   @keyframes gradientText {
     0%, 100% {
       background-position: 0% 50%;
