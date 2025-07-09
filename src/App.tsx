@@ -33,16 +33,8 @@ function App() {
 
   const renderHomeSection = () => {
     return (
-      <React.Suspense 
-        fallback={
-          <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
-            <Hero onNavigate={setActiveSection} />
-          </div>
-        }
-      >
         <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-          {/* WaterWave layer - behind everything */}
-          <WaterWave 
+        <WaterWave 
             imageUrl={backgroundImage}
             style={{ 
               width: '100%', 
