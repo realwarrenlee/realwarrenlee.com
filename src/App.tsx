@@ -7,12 +7,6 @@ import Garden from './components/Garden';
 import ArchiveSection from './components/ArchiveSection';
 import Contact from './components/Contact';
 
-// Import your background image
-import backgroundImage from './assets/background.jpg';
-
-// Lazy load WaterWave to avoid bundle size issues
-const WaterWave = React.lazy(() => import('react-water-wave'));
-
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -33,66 +27,6 @@ function App() {
     }
   };
 
-  // Render home section with WaterWave
-  const renderHomeSection = () => {
-    return (
-      <React.Suspense 
-        fallback={
-          <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
-            <Hero onNavigate={setActiveSection} />
-          </div>
-        }
-      >
-        <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-          {/* WaterWave layer - behind everything */}
-          <WaterWave 
-            imageUrl={backgroundImage}
-            style={{ 
-              width: '100%', 
-              height: '100%',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 1
-            }}
-            dropRadius={3}
-            perturbance={0.04}
-            resolution={256}
-          >
-            {({ pause, play }) => (
-              // This div will have the ripple effect
-              <div style={{ width: '100%', height: '100%' }} />
-            )}
-          </WaterWave>
-          
-          {/* Content layer - on top, unaffected by ripples */}
-          <div 
-            className="min-h-screen w-full font-inter overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8"
-            style={{ 
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 2,
-              width: '100%',
-              height: '100%',
-              pointerEvents: 'none' // Allow clicks to pass through to buttons
-            }}
-          >
-            <div style={{ pointerEvents: 'auto' }}>
-              <Hero onNavigate={setActiveSection} />
-            </div>
-          </div>
-        </div>
-      </React.Suspense>
-    );
-  };
-
-  // Main render logic
-  if (activeSection === 'home') {
-    return renderHomeSection();
-  }
-
-  // For non-home sections, render normally with original background
   return (
     <div className="min-h-screen w-full font-inter bg-gradient-radial from-pink-300 via-purple-300 to-blue-300 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
       {renderSection()}
