@@ -13,7 +13,6 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
       tags: [
         { name: 'Vibe Coding', url: null },
         { name: 'Context Engineering', url: null },
-        { name: 'Bolt', url: null }
       ],
       status: 'Featured',
       gradient: 'from-pink-400 to-purple-600',
