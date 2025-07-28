@@ -87,13 +87,15 @@ const Projects: React.FC<ProjectsProps> = ({ onBack }) => {
         <span>Back</span>
       </button>
 
-      <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
+      {/* CHANGED: max-w-6xl to max-w-4xl to match the About page */}
+      <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
         <div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal mb-4">Projects</h2>
           <div className="h-1 w-20 bg-white/30 rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        {/* CHANGED: Removed lg:grid-cols-3 to cap the layout at two columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <div key={index} className="group bg-white/10 rounded-2xl p-4 md:p-6 border border-white/20 hover:bg-white/15 transition-all duration-300 backdrop-blur-sm card-shadow hover:card-shadow-hover">
               <div className="space-y-3 md:space-y-4">
