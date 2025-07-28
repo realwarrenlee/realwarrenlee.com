@@ -16,7 +16,7 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Military', 
           date: '2025', 
           icon: Shield,
-          url: 'https://www.mindef.gov.sg/army',
+          url: 'https://www.army.gov.sg/',
           types: undefined
         },
         { 
@@ -25,7 +25,7 @@ const ArchiveSection: React.FC<ArchiveSectionProps> = ({ onBack }) => {
           type: 'Military', 
           date: '2025', 
           icon: Building,
-          url: 'https://www.mindef.gov.sg/dis',
+          url: 'https://www.dis.gov.sg/',
           types: undefined
         },
         { 
